@@ -21,4 +21,11 @@ public class PatientServiceImpl implements PatientService{
     public List<Patient> selectPatientListByDate(Date date) {
         return patientMapper.selectPatientListByDate(date);
     }
+
+    @Override
+    //查看一周内每天挂号人数
+    public int selectCount(int id) {
+        return patientMapper.selectCount(id);
+    }
+
 }

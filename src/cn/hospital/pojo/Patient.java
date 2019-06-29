@@ -1,5 +1,8 @@
 package cn.hospital.pojo;
 
+import com.alibaba.fastjson.annotation.JSONField;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 
 public class Patient {
@@ -81,6 +84,8 @@ public class Patient {
      *
      * @mbggenerated Tue Jun 25 19:21:00 CST 2019
      */
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @JSONField(format = "yyyy-MM-dd")
     private Date createDate;
 
     /**
@@ -89,6 +94,8 @@ public class Patient {
      *
      * @mbggenerated Tue Jun 25 19:21:00 CST 2019
      */
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @JSONField(format = "yyyy-MM-dd")
     private Date modifyDate;
 
     /**

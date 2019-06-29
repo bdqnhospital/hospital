@@ -10,6 +10,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link rel="stylesheet" href="/layui/css/layui.css"  media="all">
+    <script type="text/javascript" src="${pageContext.request.contextPath}/statics/js/jquery-1.8.2.min.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/statics/js/todayInfo.js"></script>
 </head>
 <body class="layui-layout-body">
 <div class="layui-layout layui-layout-admin">
@@ -49,7 +51,7 @@
                 <li class="layui-nav-item layui-nav-itemed">
                     <a class="" href="javascript:;">挂号管理</a>
                     <dl class="layui-nav-child">
-                        <dd><a href="javascript:;">今日挂号</a></dd>
+                        <dd><a class="todayRegister" href="javascript:;">今日挂号</a></dd>
                         <dd><a href="javascript:;">本周挂号</a></dd>
                         <dd><a href="">医院新闻</a></dd>
                     </dl>
@@ -59,71 +61,52 @@
                     <dl class="layui-nav-child">
                         <dd><a href="javascript:;">今日诊断</a></dd>
                         <dd><a href="javascript:;">本周诊断</a></dd>
-                        <dd><a href="">医院新闻</a></dd>
+                        <dd><a href="javascript:;">医院新闻</a></dd>
                     </dl>
                 </li>
-                <li class="layui-nav-item"><a href="">本周排班</a></li>
+                <li class="layui-nav-item"><a href="javascript:;">本周排班</a></li>
             </ul>
         </div>
     </div>
 
-    <script type="text/javascript">
-        $(".layui-nav-child:first-child").on("click",function () {
-            alert("ssssssssssssssssss");
-            var today = $(this);
-            $.ajax({
-                "url":"todayInfo",
-                "type":"get",
-                "dataType":"json",
-                "success":function (result) {
-                    if("data"==result) {
-                        $(result).each(function (i) {
-                            result[i].patientIdentity;
-                        })
-                    }else if (result=='') {
-                        alert("操作超时");
-                    }
-                },
-                "error":function () {
-
-                }
-            });
-        });
-    </script>
     <div class="layui-body">
         <!-- 内容主体区域 -->
-        <div style="padding: 15px;">
-            <table class="layui-hide" id="test"></table>
-            <script src="../js/layui.all.js" charset="utf-8"></script>
-            <!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
-            <script>
-                layui.use('table', function(){
-                    var table = layui.table;
-                    table.render({
-                        elem: '#test'
-                        ,url:'/demo/table/user/'
-                        ,cellMinWidth: 80 //全局定义常规单元格的最小宽度，layui 2.2.1 新增
-                        ,cols: [[
-                            {field:'id', width:80, title: 'ID', sort: true}
-                            ,{field:'username', width:80, title: '用户名'}
-                            ,{field:'sex', width:80, title: '性别', sort: true}
-                            ,{field:'city', width:80, title: '城市'}
-                            ,{field:'sign', title: '签名', width: '30%', minWidth: 100} //minWidth：局部定义当前单元格的最小宽度，layui 2.2.1 新增
-                            ,{field:'experience', title: '积分', sort: true}
-                            ,{field:'score', title: '评分', sort: true}
-                            ,{field:'classify', title: '职业'}
-                            ,{field:'wealth', width:137, title: '财富', sort: true}
-                        ]]
-                    });
-                });
-            </script>
-        </div>
+        <table class="layui-table">
+            <colgroup>
+                <col width="150">
+                <col width="200">
+                <col>
+            </colgroup>
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>病人编号</th>
+                <th>姓名</th>
+                <th>性别</th>
+                <th>手机</th>
+                <th>地址</th>
+                <th>挂号日期</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="patientList">
+                <td>贤心</td>
+                <td>2016-11-29</td>
+                <td>人生就像是一场修行</td>
+            </tr>
+            <tr>
+                <td>许闲心</td>
+                <td>2016-11-28</td>
+                <td>于千万人之中遇见你所遇见的人，于千万年之中，时间的无涯的荒野里…</td>
+            </tr>
+            </tbody>
+        </table>
     </div>
     <div class="layui-footer">
         <!-- 底部固定区域 -->
     </div>
 </div>
-<script src="/layui/layui.js"></script>
+<script src="/layui/layui.all.js"></script>
 <script>
     //JavaScript代码区域
     layui.use('element', function(){

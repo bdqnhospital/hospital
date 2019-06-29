@@ -9,4 +9,7 @@ import java.util.List;
 public interface PatientService {
 
     List<Patient> selectPatientListByDate(Date date);
+
+    //查看一周内每天挂号人数
+    int selectCount(int id);
 }

@@ -31,7 +31,7 @@ public class DoctorController {
         Doctor doctor = doctorService.selectDoctorByParam(doctorId,doctorPassword);
         if(null != doctor) {
             session.setAttribute("doctor",doctor);
-            return "back_welcome";
+            return "redirect:/sectionController/showSectionName";
         }
       return "login";
     }

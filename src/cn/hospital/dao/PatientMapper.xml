@@ -115,13 +115,39 @@
 
   <select id="selectPatientListByDate" resultMap="BaseResultMap">
     <!--
-     根绝日期查询挂号列表
+     根绝日期查询当日挂号列表
     -->
-    SELECT * from hospital
+    SELECT * from hospital_patient
     <where>
       <if test="date != null">
         and DATE(create_date)=DATE(#{date})
       </if>
     </where>
+  </select>
+
+  <select id="selectPatientListByWeek" resultMap="BaseResultMap">
+    <!--
+     根绝日期查询本周挂号列表
+    -->
+    SELECT * from hospital_patient
+    <where>
+      <if test="date != null">
+        and DATE(create_date)=DATE(#{date})
+      </if>
+    </where>
+  </select>
+
+  <select id="selectCount" parameterType="int">
+    SELECT COUNT(1) FROM hospital_patient
+    <where>
+      <if test="createDate != null">
+        AND DATE_SUB(CURDATE(), INTERVAL 7 DAY) &lt;= DATE(#{createDate})
+        AND DATE(NOW())>=DATE(#{createDate})
+      </if>
+      <if test="doctorId != 0">
+        doctor_id=#{id}
+      </if>
+    </where>
+
   </select>
 </mapper>
