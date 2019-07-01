@@ -28,15 +28,13 @@ public interface PatientMapper {
      * @param date 日期
      * @return 返回挂号列表
      */
-    List<Patient> selectPatientListByDate(@Param("date") Date date);
+    List<Patient> selectPatientListByDate(@Param("date") Date date,@Param("id") Integer id);
 
     /**
      * 查询本周挂号单列表
-     * @param date 日期
+     * @param id
      * @return
      */
-    List<Patient> selectPatientListByWeek(@Param("date")Date date);
+    List<Patient> selectPatientListByWeek(@Param("id") Integer id);
 
-    //查看一周内每天挂号人数
-    int selectCount(int id);
 }

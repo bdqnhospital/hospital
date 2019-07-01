@@ -8,8 +8,10 @@ import java.util.List;
 
 public interface PatientService {
 
-    List<Patient> selectPatientListByDate(Date date);
+    //根据日期查询挂号单
+    List<Patient> selectPatientListByDate(Date date,Integer id);
 
-    //查看一周内每天挂号人数
-    int selectCount(int id);
+    //查询本周挂号单列表
+    List<Patient> selectPatientListByWeek(@Param("id") Integer id);
+
 }

@@ -23,7 +23,9 @@ public class SectionController {
     public String showSectionName(HttpSession session, Model model) {
         Doctor doctor1 = (Doctor) session.getAttribute("doctor");
         Integer sid = doctor1.getDoctorId();
+        System.out.println(sid);
         Section section = sectionService.findSectionById(sid);
+        System.out.println(section.getSectionName());
         model.addAttribute("section",section);
         return "back_welcome";
     }

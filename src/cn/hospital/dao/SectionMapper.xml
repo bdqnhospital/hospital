@@ -92,7 +92,7 @@
   </insert>
 
   <!--根据医生id查询显示科室名称-->
-  <select id="findSectionById" resultType="cn.hospital.pojo.Section" parameterType="Integer">
+  <select id="findSectionById" resultMap="BaseResultMap" parameterType="Integer">
 
     SELECT s.* FROM hospital_section AS s INNER JOIN hospital_doctor AS d ON s.section_id=d.section_id WHERE d.doctor_id=#{id}
 
