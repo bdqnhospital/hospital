@@ -1,19 +1,21 @@
 package cn.hospital.controller;
 
+import cn.hospital.pojo.Doctor;
 import cn.hospital.pojo.Patient;
 import cn.hospital.service.PatientService;
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.serializer.SerializerFeature;
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
+import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.http.converter.StringHttpMessageConverter;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpSession;
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 @Controller
 @RequestMapping("patientController")
@@ -25,54 +27,35 @@ public class PatientController {
 
     /**
      * 查询当日挂号人数
-     * @return
+     * @return list
      */
     @ResponseBody
-    @RequestMapping(value="todayInfo",produces = {"application/json;charset=UTF-8"})
-    public String todayInfo() {
+    @RequestMapping("/todayInfo")
+    public List<Patient> todayInfo(HttpSession session) {
+        Doctor doctor = (Doctor) session.getAttribute("doctor");
         Date date = new Date();
-        List<Patient> list = patientService.selectPatientListByDate(date);
-        System.out.println(list);
-        if (list!=null) {
-            String jsonStirng = JSON.toJSONString(list, SerializerFeature.WriteDateUseDateFormat);
-            return jsonStirng;
-            //String jsonStirng = "{\"code\":\"0\",\"msg\":\"\",\"count\":"+list.size()+",\"data\":"+jsonStirng111+"}";
-            //System.out.println(jsonStirng);
-            //return jsonStirng;
-        } else {
-            return "nodata";
-        }
+        //分页
+        //PageHelper.startPage(1,1);
+        List<Patient> list = patientService.selectPatientListByDate(date,doctor.getDoctorId());
+        System.out.println("---------------" + list);
+        return list;
     }
 
-    @RequestMapping("toDataTable")
+    @RequestMapping("/toDataTable")
     public String toDataTable() {
         return "dataTable";
     }
     /**
-     * 查询本周挂号人数
-     * @return
+     * 查询一周的挂号清单
+     * @return list
      */
-    /*@RequestMapping("weekInfo")
-    public String weekInfo() {
-        Date date = new Date();
-        List<Patient> list = patientService.selectPatientListByWeek(date);
-        if (list!=null) {
-            String jsonStirng = JSON.toJSONString(list);
-            return "data";
-        } else {
-            return "nodata";
-        }
-    }*/
-
-
-    public String selectCountById(String id, Model model){
-        int targetId = Integer.parseInt(id);
-        int Result = patientService.selectCount(targetId);
-        if(Result!=0){
-            model.addAttribute("Result",Result);
-            return "Ajax";
-        }
-        return "redirect:Ajax";
+    @ResponseBody
+    @RequestMapping("/weekInfo")
+    public List<Patient> weekInfo(HttpSession session) {
+        Doctor doctor = (Doctor) session.getAttribute("doctor");
+        List<Patient> list = patientService.selectPatientListByWeek(doctor.getDoctorId());
+        System.out.println("******************************"+list);
+        return list;
     }
 }
 

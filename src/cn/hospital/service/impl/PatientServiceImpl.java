@@ -18,14 +18,15 @@ public class PatientServiceImpl implements PatientService{
     private PatientMapper patientMapper;
 
     @Override
-    public List<Patient> selectPatientListByDate(Date date) {
-        return patientMapper.selectPatientListByDate(date);
+    //根据日期查询挂号单
+    public List<Patient> selectPatientListByDate(Date date,Integer id) {
+        return patientMapper.selectPatientListByDate(date,id);
     }
 
     @Override
-    //查看一周内每天挂号人数
-    public int selectCount(int id) {
-        return patientMapper.selectCount(id);
+    //查询本周挂号单列表
+    public List<Patient> selectPatientListByWeek(Integer id) {
+        return patientMapper.selectPatientListByWeek(id);
     }
 
 }

@@ -1,6 +1,7 @@
 package cn.hospital.pojo;
 
 import com.alibaba.fastjson.annotation.JSONField;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
@@ -85,7 +86,8 @@ public class Patient {
      * @mbggenerated Tue Jun 25 19:21:00 CST 2019
      */
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    @JSONField(format = "yyyy-MM-dd")
+    //@JSONField(format = "yyyy-MM-dd")
+    @JsonFormat(locale = "zh", timezone = "GMT+8", pattern = "yyyy-MM-dd")
     private Date createDate;
 
     /**
@@ -95,7 +97,8 @@ public class Patient {
      * @mbggenerated Tue Jun 25 19:21:00 CST 2019
      */
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    @JSONField(format = "yyyy-MM-dd")
+    //@JSONField(format = "yyyy-MM-dd")
+    @JsonFormat(locale = "zh", timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
     private Date modifyDate;
 
     /**
@@ -103,7 +106,6 @@ public class Patient {
      * This method returns the value of the database column hospital_patient.id
      *
      * @return the value of hospital_patient.id
-     *
      * @mbggenerated Tue Jun 25 19:21:00 CST 2019
      */
     public Integer getId() {
@@ -115,7 +117,6 @@ public class Patient {
      * This method sets the value of the database column hospital_patient.id
      *
      * @param id the value for hospital_patient.id
-     *
      * @mbggenerated Tue Jun 25 19:21:00 CST 2019
      */
     public void setId(Integer id) {
@@ -127,7 +128,6 @@ public class Patient {
      * This method returns the value of the database column hospital_patient.patient_id
      *
      * @return the value of hospital_patient.patient_id
-     *
      * @mbggenerated Tue Jun 25 19:21:00 CST 2019
      */
     public Integer getPatientId() {
@@ -139,7 +139,6 @@ public class Patient {
      * This method sets the value of the database column hospital_patient.patient_id
      *
      * @param patientId the value for hospital_patient.patient_id
-     *
      * @mbggenerated Tue Jun 25 19:21:00 CST 2019
      */
     public void setPatientId(Integer patientId) {
@@ -151,7 +150,6 @@ public class Patient {
      * This method returns the value of the database column hospital_patient.section_id
      *
      * @return the value of hospital_patient.section_id
-     *
      * @mbggenerated Tue Jun 25 19:21:00 CST 2019
      */
     public Integer getSectionId() {
@@ -163,7 +161,6 @@ public class Patient {
      * This method sets the value of the database column hospital_patient.section_id
      *
      * @param sectionId the value for hospital_patient.section_id
-     *
      * @mbggenerated Tue Jun 25 19:21:00 CST 2019
      */
     public void setSectionId(Integer sectionId) {
@@ -175,7 +172,6 @@ public class Patient {
      * This method returns the value of the database column hospital_patient.doctor_id
      *
      * @return the value of hospital_patient.doctor_id
-     *
      * @mbggenerated Tue Jun 25 19:21:00 CST 2019
      */
     public Integer getDoctorId() {
@@ -187,7 +183,6 @@ public class Patient {
      * This method sets the value of the database column hospital_patient.doctor_id
      *
      * @param doctorId the value for hospital_patient.doctor_id
-     *
      * @mbggenerated Tue Jun 25 19:21:00 CST 2019
      */
     public void setDoctorId(Integer doctorId) {
@@ -199,7 +194,6 @@ public class Patient {
      * This method returns the value of the database column hospital_patient.patient_name
      *
      * @return the value of hospital_patient.patient_name
-     *
      * @mbggenerated Tue Jun 25 19:21:00 CST 2019
      */
     public String getPatientName() {
@@ -211,7 +205,6 @@ public class Patient {
      * This method sets the value of the database column hospital_patient.patient_name
      *
      * @param patientName the value for hospital_patient.patient_name
-     *
      * @mbggenerated Tue Jun 25 19:21:00 CST 2019
      */
     public void setPatientName(String patientName) {
@@ -223,7 +216,6 @@ public class Patient {
      * This method returns the value of the database column hospital_patient.patient_sex
      *
      * @return the value of hospital_patient.patient_sex
-     *
      * @mbggenerated Tue Jun 25 19:21:00 CST 2019
      */
     public String getPatientSex() {
@@ -235,7 +227,6 @@ public class Patient {
      * This method sets the value of the database column hospital_patient.patient_sex
      *
      * @param patientSex the value for hospital_patient.patient_sex
-     *
      * @mbggenerated Tue Jun 25 19:21:00 CST 2019
      */
     public void setPatientSex(String patientSex) {
@@ -247,7 +238,6 @@ public class Patient {
      * This method returns the value of the database column hospital_patient.patient_identity
      *
      * @return the value of hospital_patient.patient_identity
-     *
      * @mbggenerated Tue Jun 25 19:21:00 CST 2019
      */
     public String getPatientIdentity() {
@@ -259,7 +249,6 @@ public class Patient {
      * This method sets the value of the database column hospital_patient.patient_identity
      *
      * @param patientIdentity the value for hospital_patient.patient_identity
-     *
      * @mbggenerated Tue Jun 25 19:21:00 CST 2019
      */
     public void setPatientIdentity(String patientIdentity) {
@@ -271,7 +260,6 @@ public class Patient {
      * This method returns the value of the database column hospital_patient.patient_mobile
      *
      * @return the value of hospital_patient.patient_mobile
-     *
      * @mbggenerated Tue Jun 25 19:21:00 CST 2019
      */
     public String getPatientMobile() {
@@ -283,7 +271,6 @@ public class Patient {
      * This method sets the value of the database column hospital_patient.patient_mobile
      *
      * @param patientMobile the value for hospital_patient.patient_mobile
-     *
      * @mbggenerated Tue Jun 25 19:21:00 CST 2019
      */
     public void setPatientMobile(String patientMobile) {
@@ -295,7 +282,6 @@ public class Patient {
      * This method returns the value of the database column hospital_patient.patient_address
      *
      * @return the value of hospital_patient.patient_address
-     *
      * @mbggenerated Tue Jun 25 19:21:00 CST 2019
      */
     public String getPatientAddress() {
@@ -307,7 +293,6 @@ public class Patient {
      * This method sets the value of the database column hospital_patient.patient_address
      *
      * @param patientAddress the value for hospital_patient.patient_address
-     *
      * @mbggenerated Tue Jun 25 19:21:00 CST 2019
      */
     public void setPatientAddress(String patientAddress) {
@@ -319,7 +304,6 @@ public class Patient {
      * This method returns the value of the database column hospital_patient.create_date
      *
      * @return the value of hospital_patient.create_date
-     *
      * @mbggenerated Tue Jun 25 19:21:00 CST 2019
      */
     public Date getCreateDate() {
@@ -331,7 +315,6 @@ public class Patient {
      * This method sets the value of the database column hospital_patient.create_date
      *
      * @param createDate the value for hospital_patient.create_date
-     *
      * @mbggenerated Tue Jun 25 19:21:00 CST 2019
      */
     public void setCreateDate(Date createDate) {
@@ -343,7 +326,6 @@ public class Patient {
      * This method returns the value of the database column hospital_patient.modify_date
      *
      * @return the value of hospital_patient.modify_date
-     *
      * @mbggenerated Tue Jun 25 19:21:00 CST 2019
      */
     public Date getModifyDate() {
@@ -355,7 +337,6 @@ public class Patient {
      * This method sets the value of the database column hospital_patient.modify_date
      *
      * @param modifyDate the value for hospital_patient.modify_date
-     *
      * @mbggenerated Tue Jun 25 19:21:00 CST 2019
      */
     public void setModifyDate(Date modifyDate) {

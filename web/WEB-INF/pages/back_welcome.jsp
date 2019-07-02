@@ -11,7 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link rel="stylesheet" href="/layui/css/layui.css"  media="all">
     <script type="text/javascript" src="${pageContext.request.contextPath}/statics/js/jquery-1.8.2.min.js"></script>
-    <script type="text/javascript" src="${pageContext.request.contextPath}/statics/js/todayInfo.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/statics/js/myjs.js"></script>
 </head>
 <body class="layui-layout-body">
 <div class="layui-layout layui-layout-admin">
@@ -19,13 +19,10 @@
         <div class="layui-logo">医生登录后台</div>
         <!-- 头部区域（可配合layui已有的水平导航） -->
         <ul class="layui-nav layui-layout-left">
-            <li class="layui-nav-item"><a href="">挂号管理</a></li>
             <li class="layui-nav-item">
-                <a href="javascript:;">其他功能</a>
+                <a href="javascript:;">科室</a>
                 <dl class="layui-nav-child">
-                    <dd><a href="">邮件管理</a></dd>
-                    <dd><a href="">消息管理</a></dd>
-                    <dd><a href="">授权管理</a></dd>
+                    <dd><a href="">${section.sectionName}</a></dd>
                 </dl>
             </li>
         </ul>
@@ -52,7 +49,7 @@
                     <a class="" href="javascript:;">挂号管理</a>
                     <dl class="layui-nav-child">
                         <dd><a class="todayRegister" href="javascript:;">今日挂号</a></dd>
-                        <dd><a href="javascript:;">本周挂号</a></dd>
+                        <dd><a class="weekInfo" href="javascript:;">本周挂号</a></dd>
                         <dd><a href="">医院新闻</a></dd>
                     </dl>
                 </li>
@@ -71,7 +68,41 @@
 
     <div class="layui-body">
         <!-- 内容主体区域 -->
-        <table class="layui-table">
+        <table class="layui-table" id="one">
+            <colgroup>
+                <col width="150">
+                <col width="200">
+                <col>
+            </colgroup>
+        <thead>
+        <tr>
+            <th>预约号</th>
+            <th>姓名</th>
+        </tr>
+        </thead>
+        <tbody id="patient">
+
+        </tbody>
+        </table>
+
+        <table class="layui-table" id="three">
+            <colgroup>
+                <col width="150">
+                <col width="200">
+                <col>
+            </colgroup>
+        <thead>
+        <tr>
+            <th>预约号</th>
+            <th>姓名</th>
+        </tr>
+        </thead>
+        <tbody id="patient2">
+
+        </tbody>
+        </table>
+
+        <table class="layui-table" id="two">
             <colgroup>
                 <col width="150">
                 <col width="200">
@@ -85,20 +116,12 @@
                 <th>性别</th>
                 <th>手机</th>
                 <th>地址</th>
+                <th>身份证号</th>
                 <th>挂号日期</th>
             </tr>
             </thead>
-            <tbody>
-            <tr class="patientList">
-                <td>贤心</td>
-                <td>2016-11-29</td>
-                <td>人生就像是一场修行</td>
-            </tr>
-            <tr>
-                <td>许闲心</td>
-                <td>2016-11-28</td>
-                <td>于千万人之中遇见你所遇见的人，于千万年之中，时间的无涯的荒野里…</td>
-            </tr>
+            <tbody id="patientInfo">
+
             </tbody>
         </table>
     </div>
@@ -112,6 +135,7 @@
     layui.use('element', function(){
         var element = layui.element;
     });
+
 </script>
 </body>
 </html>
