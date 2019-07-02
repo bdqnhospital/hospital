@@ -89,4 +89,20 @@
       </if>
     </trim>
   </insert>
+
+  <select id="selectDrugsByName" resultMap="BaseResultMap">
+    /*根据药品名称查询药品*/
+    select * from hospital_drugs
+    <where>
+      and drugs_name=#{drugsName}
+    </where>
+  </select>
+
+  <select id="selectDrugsList" resultMap="BaseResultMap">
+      /*查询药品列表*/
+      select * from hospital_drugs
+      <where>
+        and 1=1
+      </where>
+  </select>
 </mapper>

@@ -2,6 +2,8 @@ package cn.hospital.dao;
 
 import cn.hospital.pojo.Section;
 
+import java.util.List;
+
 public interface SectionMapper {
 
     //根据医生id查询显示科室名称
@@ -24,4 +26,10 @@ public interface SectionMapper {
      * @mbggenerated Tue Jun 25 19:21:00 CST 2019
      */
     int insertSelective(Section record);
+
+    /**
+     * 查询科室列表
+     * @return 返回科室列表集合
+     */
+    List<Section> selectSectionList();
 }

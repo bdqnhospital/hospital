@@ -37,4 +37,7 @@ public interface PatientMapper {
      */
     List<Patient> selectPatientListByWeek(@Param("id") Integer id);
 
+
+    //查看一周内每天挂号人数
+    int selectCount(int id);
 }

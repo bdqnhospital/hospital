@@ -1,6 +1,10 @@
 package cn.hospital.dao;
 
 import cn.hospital.pojo.Drugs;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
+
 
 public interface DrugsMapper {
     /**
@@ -18,4 +22,17 @@ public interface DrugsMapper {
      * @mbggenerated Tue Jun 25 19:21:00 CST 2019
      */
     int insertSelective(Drugs record);
+
+    /**
+     * 根据药品名称查询药品
+     * @param name  药品名称
+     * @return 返回药品信息
+     */
+    Drugs selectDrugsByName(@Param("drugsName") String name);
+
+    /**
+     * 查询药品列表
+     * @return 返回药品列表
+     */
+    List<Drugs> selectDrugsList();
 }
